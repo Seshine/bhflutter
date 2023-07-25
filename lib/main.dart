@@ -1,7 +1,9 @@
+import 'package:bhcare/Widgets/MyAnimatedWidget.dart';
 import 'package:flutter/material.dart';
 
 import 'Model/Product.dart';
 import 'Widgets/ProductBox.dart';
+import 'Widgets/ProductPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,9 +36,18 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage>  with SingleTickerProviderStateMixin {
+  late Animation<double> animation;
+  late var controller;
 
 
+ @override
+  void initState() {
+   controller=  AnimationController(duration: const Duration(seconds: 2), vsync:this);
+   animation = Tween<double>(begin: 0.0, end: 1.0).animate(controller);
+   controller.forward();
+    super.initState();
+  }
 
 
   @override
@@ -48,7 +59,18 @@ class _MyHomePageState extends State<MyHomePage> {
         body: ListView.builder(
           itemCount: items.length,
           itemBuilder: (context, index) {
-            return ProductBox(item: items[index]);
+            return GestureDetector(child:
+
+            MyAnimatedWidget(child: ProductBox(item: items[index]),animation: animation,),
+            onTap: ()=>{
+              Navigator.push(context,
+
+                  MaterialPageRoute( builder: (context) => ProductPage(item:
+                  items[index]),)
+
+
+              )
+            },);
           },
         ));
   }
