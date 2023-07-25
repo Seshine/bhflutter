@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'Model/Product.dart';
+import 'Widgets/ProductBox.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -39,28 +42,14 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-     // This trailing comma makes auto-formatting nicer for build methods.
-    );
+    var items = Product.getProducts();
+    return  Scaffold(
+        appBar: AppBar(title: Text("Product Navigation")),
+        body: ListView.builder(
+          itemCount: items.length,
+          itemBuilder: (context, index) {
+            return ProductBox(item: items[index]);
+          },
+        ));
   }
 }
