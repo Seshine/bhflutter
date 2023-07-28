@@ -1,9 +1,11 @@
 import 'package:bhcare/Widgets/MyAnimatedWidget.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
 
 import 'Model/Product.dart';
 import 'Widgets/ProductBox.dart';
-import 'Widgets/ProductPage.dart';
+import 'messagechanel/my_browser_plugin.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,7 +50,23 @@ class _MyHomePageState extends State<MyHomePage>  with SingleTickerProviderState
    controller.forward();
     super.initState();
   }
+  _openBrowser() async {
+    showToast();
+    MyBrowserPlugin().openBrowser("https://flutter.dev");
 
+
+  }
+
+  void showToast() {
+    Fluttertoast.showToast(
+      msg: 'This is a toast message!',
+      toastLength: Toast.LENGTH_SHORT, // Duration for which the toast is visible
+      gravity: ToastGravity.CENTER, // Position of the toast on the screen
+      backgroundColor: Colors.black, // Background color of the toast
+      textColor: Colors.white, // Text color of the toast
+      fontSize: 16.0, // Font size for the toast message
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,15 +81,19 @@ class _MyHomePageState extends State<MyHomePage>  with SingleTickerProviderState
 
             MyAnimatedWidget(child: ProductBox(item: items[index]),animation: animation,),
             onTap: ()=>{
-              Navigator.push(context,
+
+              showToast
+    /*Navigator.push(context,
 
                   MaterialPageRoute( builder: (context) => ProductPage(item:
-                  items[index]),)
+                  items[index]),) )*/
 
 
-              )
+
             },);
           },
+
         ));
+
   }
 }
