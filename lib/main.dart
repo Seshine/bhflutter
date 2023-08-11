@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import 'Model/Product.dart';
 import 'Widgets/ProductBox.dart';
+import 'bhc/my_widget.dart';
 import 'messagechanel/my_browser_plugin.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black45),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home:  SafeArea(child: MyWidget()),
     );
   }
 }
