@@ -80,7 +80,7 @@ class MyWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: MediaQuery.g,
+                 
                       child: ElevatedButton(
 
                         onPressed: () {
