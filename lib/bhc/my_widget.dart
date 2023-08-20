@@ -6,7 +6,7 @@ class MyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-
+      color: Colors.black,
       padding: EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,21 +80,42 @@ class MyWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                 
+                       width: MediaQuery.of(context).size.width,
                       child: ElevatedButton(
+
+                        style: ButtonStyle(
+                           backgroundColor: MaterialStatePropertyAll<Color>(Colors.grey),
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    side: BorderSide()))),
+
 
                         onPressed: () {
                           // Button 1 pressed action
+
                         },
-                        child: Text('Button 1'),
+                        child: Text('lOGIN',style: TextStyle(color: Colors.white)),
                       ),
                     ),
-                    SizedBox(width: 16.0),
-                    ElevatedButton(
-                      onPressed: () {
-                        // Button 2 pressed action
-                      },
-                      child: Text('Button 2'),
+                    SizedBox(height: 20.0),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStatePropertyAll<Color>(Colors.grey),
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    side: BorderSide()))),
+
+                        onPressed: () {
+                          // Button 2 pressed action
+                        },
+                        child: Text('SIGNUP',style: TextStyle(color: Colors.white),),
+                      ),
                     ),
                   ],
                 ),
